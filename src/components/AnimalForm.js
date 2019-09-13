@@ -4,7 +4,7 @@ import * as yup from "yup";
 
 
 const AnimalForm = (errors, touched) => {
-  // console.log(props)
+  console.log(errors, touched)
   return (
     <Form>
       {touched.species && errors.species && <p className="error">{errors.species}</p>}
@@ -50,7 +50,7 @@ export default withFormik({
   },
   validationSchema: yup.object().shape({
     species: yup.string().required(),
-    age: yup.number().required().positive().integer().required,
+    age: yup.number().positive(),
     diet: yup.string().required(),
     vaccinations: yup.boolean().required()
   }),
